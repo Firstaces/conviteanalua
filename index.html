@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convite - Ana Lua 1 Ano</title>
+
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="/_sdk/data_sdk.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&amp;family=Nunito:wght@400;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .font-lobster {
+        font-family: "Lobster", cursive;
+      }
+      .font-nunito {
+        font-family: "Nunito", sans-serif;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(5deg);
+        }
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(1.2);
+        }
+      }
+
+      @keyframes bounce-slow {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+      .sparkle-animation {
+        animation: sparkle 2s ease-in-out infinite;
+      }
+      .bounce-animation {
+        animation: bounce-slow 2s ease-in-out infinite;
+      }
+
+      .sunflower-pattern {
+        background-image:
+          radial-gradient(circle at 20% 20%, #ffd700 2px, transparent 2px),
+          radial-gradient(circle at 80% 30%, #ffd700 2px, transparent 2px),
+          radial-gradient(circle at 40% 80%, #ffd700 2px, transparent 2px),
+          radial-gradient(circle at 90% 70%, #ffd700 2px, transparent 2px);
+        background-size: 100px 100px;
+      }
+
+      .grass-border {
+        background: linear-gradient(
+          135deg,
+          #228b22 25%,
+          #32cd32 25%,
+          #32cd32 50%,
+          #228b22 50%,
+          #228b22 75%,
+          #32cd32 75%
+        );
+        background-size: 20px 20px;
+      }
+
+      .wooden-texture {
+        background: linear-gradient(
+          90deg,
+          #8b4513 0%,
+          #a0522d 20%,
+          #8b4513 40%,
+          #cd853f 60%,
+          #8b4513 80%,
+          #a0522d 100%
+        );
+      }
+
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+        .print-break {
+          page-break-after: always;
+        }
+        body {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+      }
+
+      body {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body class="h-full font-nunito">
+    <div
+      id="app"
+      class="min-h-full overflow-auto"
+      style="
+        background: linear-gradient(
+          180deg,
+          #87ceeb 0%,
+          #98fb98 50%,
+          #90ee90 100%
+        );
+      "
+    >
+      <!-- Convite Principal -->
+      <div id="convite-section" class="relative px-4 py-8">
+        <!-- Elementos decorativos -->
+        <div
+          class="absolute top-4 left-4 text-4xl float-animation"
+          style="animation-delay: 0s"
+        >
+          🌻
+        </div>
+        <div
+          class="absolute top-8 right-8 text-3xl float-animation"
+          style="animation-delay: 0.5s"
+        >
+          🦜
+        </div>
+        <div
+          class="absolute top-20 left-10 text-2xl float-animation"
+          style="animation-delay: 1s"
+        >
+          🌽
+        </div>
+        <div class="absolute top-16 right-16 text-2xl sparkle-animation">
+          ✨
+        </div>
+
+        <!-- Card Principal -->
+        <div class="max-w-md mx-auto">
+          <!-- Topo de madeira -->
+          <div class="wooden-texture h-4 rounded-t-2xl"></div>
+
+          <!-- Conteúdo do Convite -->
+          <div
+            class="bg-gradient-to-b from-amber-50 to-orange-50 p-6 shadow-2xl border-x-4 border-amber-700 sunflower-pattern relative"
+          >
+            <!-- Placa de madeira título -->
+            <div
+              class="bg-amber-800 rounded-lg p-3 mb-6 shadow-lg transform -rotate-1 border-4 border-amber-900"
+            >
+              <div class="bg-amber-100 rounded p-3 text-center">
+                <p class="text-amber-800 text-sm font-bold mb-1">
+                  Você está convidado para o
+                </p>
+                <h1
+                  class="font-lobster text-3xl text-amber-900"
+                  id="titulo-festa"
+                >
+                  1º Aniversário
+                </h1>
+              </div>
+            </div>
+
+            <!-- Nome da Aniversariante -->
+            <div class="text-center mb-6">
+              <div
+                class="inline-block bg-gradient-to-r from-green-600 via-yellow-500 to-green-600 p-1 rounded-full"
+              >
+                <div class="bg-white rounded-full px-8 py-4">
+                  <!-- FOTO (agora no lugar certo: FORA do H2) -->
+                  <div class="flex justify-center mb-4">
+                    <div
+                      class="w-36 h-36 rounded-full p-1 bg-gradient-to-r from-green-600 via-yellow-500 to-orange-500 shadow-2xl float-animation"
+                    >
+                      <img
+                        id="foto-aniversariante"
+                        src="./ana-lua-emilia.png"
+                        alt="Ana Lua vestida de Emília"
+                        class="w-full h-full rounded-full object-cover border-4 border-white"
+                        loading="lazy"
+                        onerror="
+                          this.style.display = 'none';
+                          console.log('ERRO ao carregar imagem:', this.src);
+                        "
+                      />
+                    </div>
+                  </div>
+
+                  <h2
+                    class="font-lobster text-5xl bg-gradient-to-r from-green-700 via-yellow-600 to-orange-500 bg-clip-text text-transparent"
+                    id="nome-display"
+                  >
+                    Ana Lua
+                  </h2>
+                </div>
+              </div>
+
+              <p class="text-2xl mt-2">
+                🌻 <span id="idade-display">1 aninho</span> 🌻
+              </p>
+            </div>
+
+            <!-- Personagens do Sítio -->
+            <div class="flex justify-center gap-4 mb-6 text-4xl">
+              <span
+                class="bounce-animation"
+                style="animation-delay: 0s"
+                title="Emília"
+                >🎀</span
+              >
+              <span
+                class="bounce-animation"
+                style="animation-delay: 0.2s"
+                title="Visconde"
+                >🥕</span
+              >
+              <span
+                class="bounce-animation"
+                style="animation-delay: 0.4s"
+                title="Pedrinho"
+                >👦</span
+              >
+              <span
+                class="bounce-animation"
+                style="animation-delay: 0.6s"
+                title="Narizinho"
+                >👧</span
+              >
+              <span
+                class="bounce-animation"
+                style="animation-delay: 0.8s"
+                title="Dona Benta"
+                >👵</span
+              >
+            </div>
+
+            <!-- Informações da Festa -->
+            <div
+              class="bg-white/80 rounded-xl p-5 mb-6 border-2 border-amber-400 shadow-inner"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-3xl">📅</span>
+                <div>
+                  <p class="text-sm text-amber-700 font-bold">Data</p>
+                  <p class="text-lg font-bold text-amber-900" id="data-display">
+                    07 de Março de 2025
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-3xl">⏰</span>
+                <div>
+                  <p class="text-sm text-amber-700 font-bold">Horário</p>
+                  <p
+                    class="text-lg font-bold text-amber-900"
+                    id="horario-display"
+                  >
+                    15h às 19h
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <span class="text-3xl">📍</span>
+                <div>
+                  <p class="text-sm text-amber-700 font-bold">Local</p>
+                  <p
+                    class="text-lg font-bold text-amber-900"
+                    id="local-display"
+                  >
+                    Salão de Festas
+                  </p>
+                  <p class="text-amber-800" id="endereco-display">
+                    Salão de Festas, Condomínio Village do Horto, Estrada
+                    Anderson Ferreira da Silva, 6500
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botão de Localização -->
+            <a
+              href="https://maps.google.com/?q=Estrada+Anderson+Ferreira+Filho+6500"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="no-print block bg-gradient-to-r from-green-500 to-green-600 text-white text-center py-3 px-6 rounded-full font-bold shadow-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105 mb-4"
+            >
+              🗺️ Ver no Mapa
+            </a>
+
+            <!-- Mensagem -->
+            <div
+              class="text-center bg-yellow-100 rounded-xl p-4 border-2 border-yellow-400"
+            >
+              <p class="text-amber-800 font-medium italic">
+                "No Sítio do Picapau Amarelo, a festa vai ser de arrepiar! Venha
+                celebrar comigo esse dia especial!"
+              </p>
+              <p class="text-2xl mt-2">🌻🎂🎈</p>
+            </div>
+          </div>
+
+          <!-- Base de grama -->
+          <div class="grass-border h-4 rounded-b-2xl"></div>
+        </div>
+
+        <!-- Seção de Confirmação de Presença -->
+        <div class="max-w-md mx-auto mt-8 no-print">
+          <div
+            class="bg-white/95 rounded-2xl p-6 shadow-xl border-4 border-green-500"
+          >
+            <h3 class="font-lobster text-2xl text-center text-green-700 mb-4">
+              🎉 Confirme sua Presença!
+            </h3>
+
+            <form id="rsvp-form" class="space-y-4">
+              <div>
+                <label class="block text-sm font-bold text-amber-800 mb-1"
+                  >Seu Nome</label
+                >
+                <input
+                  type="text"
+                  id="input-nome"
+                  required
+                  class="w-full px-4 py-3 rounded-xl border-2 border-amber-300 focus:border-green-500 focus:outline-none transition-colors"
+                  placeholder="Digite seu nome"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-bold text-amber-800 mb-1"
+                  >WhatsApp</label
+                >
+                <input
+                  type="tel"
+                  id="input-telefone"
+                  required
+                  class="w-full px-4 py-3 rounded-xl border-2 border-amber-300 focus:border-green-500 focus:outline-none transition-colors"
+                  placeholder="(00) 00000-0000"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-bold text-amber-800 mb-1"
+                  >Quantos acompanhantes?</label
+                >
+                <div class="flex items-center gap-4">
+                  <button
+                    type="button"
+                    id="btn-minus"
+                    class="w-12 h-12 rounded-full bg-amber-500 text-white text-2xl font-bold hover:bg-amber-600 transition-colors"
+                  >
+                    -
+                  </button>
+
+                  <span
+                    id="acompanhantes-count"
+                    class="text-3xl font-bold text-amber-800 w-12 text-center"
+                    >0</span
+                  >
+
+                  <button
+                    type="button"
+                    id="btn-plus"
+                    class="w-12 h-12 rounded-full bg-green-500 text-white text-2xl font-bold hover:bg-green-600 transition-colors"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                id="btn-confirmar"
+                class="w-full bg-gradient-to-r from-green-500 via-yellow-500 to-green-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+              >
+                ✅ Confirmar Presença
+              </button>
+            </form>
+
+            <div id="confirmacao-sucesso" class="hidden text-center py-6">
+              <div class="text-6xl mb-4">🎊</div>
+              <h4 class="font-lobster text-2xl text-green-600 mb-2">
+                Presença Confirmada!
+              </h4>
+              <p class="text-amber-700">Obrigado! Nos vemos na festa!</p>
+
+              <button
+                id="btn-nova-confirmacao"
+                type="button"
+                class="mt-4 text-green-600 underline font-bold"
+              >
+                Fazer outra confirmação
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de Confirmados (opcional - só funciona se seu Data SDK estiver gravando dados) -->
+        <div class="max-w-md mx-auto mt-8 no-print">
+          <details
+            class="bg-white/95 rounded-2xl shadow-xl border-4 border-amber-400 overflow-hidden"
+          >
+            <summary
+              class="p-4 cursor-pointer font-bold text-amber-800 hover:bg-amber-50 transition-colors"
+            >
+              📋 Ver Confirmações (<span id="total-confirmados">0</span>
+              pessoas)
+            </summary>
+
+            <div
+              id="lista-confirmados"
+              class="p-4 border-t-2 border-amber-200 max-h-64 overflow-y-auto"
+            >
+              <p class="text-gray-500 text-center italic" id="sem-confirmacoes">
+                Nenhuma confirmação ainda
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Botões de Ação -->
+        <div class="max-w-md mx-auto mt-6 flex gap-3 no-print px-4">
+          <button
+            id="btn-compartilhar"
+            type="button"
+            class="flex-1 bg-green-500 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-2"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              />
+            </svg>
+            WhatsApp
+          </button>
+
+          <button
+            id="btn-imprimir"
+            type="button"
+            class="flex-1 bg-amber-500 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-amber-600 transition-colors flex items-center justify-center gap-2"
+          >
+            🖨️ Imprimir/PDF
+          </button>
+        </div>
+
+        <!-- Decoração inferior -->
+        <div class="flex justify-center gap-4 mt-8 text-3xl">
+          <span class="float-animation" style="animation-delay: 0.2s">🌻</span>
+          <span class="float-animation" style="animation-delay: 0.4s">🌽</span>
+          <span class="float-animation" style="animation-delay: 0.6s">🎀</span>
+          <span class="float-animation" style="animation-delay: 0.8s">🦜</span>
+          <span class="float-animation" style="animation-delay: 1s">🌻</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Configuração padrão
+      const defaultConfig = {
+        nome_aniversariante: "Ana Lua",
+        idade: "1 aninho",
+        data_festa: "07 de Março de 2025",
+        horario: "15h às 19h",
+        nome_local: "Salão de Festas",
+        endereco:
+          "Estrada Anderson Ferreira Filho, 6500 - Condominio Village do Horto",
+        background_color: "#87CEEB",
+        card_color: "#FFFBEB",
+        text_color: "#78350F",
+        primary_action_color: "#22C55E",
+        secondary_action_color: "#F59E0B",
+        font_family: "Nunito",
+        font_size: 16,
+      };
+
+      // WhatsApp da mãe (Brasil: 55 + DDD + número)
+      const WHATS_MAE = "5522998980287";
+
+      let confirmacoes = [];
+      let acompanhantes = 0;
+
+      // Elementos do DOM
+      const form = document.getElementById("rsvp-form");
+      const inputNome = document.getElementById("input-nome");
+      const inputTelefone = document.getElementById("input-telefone");
+      const btnMinus = document.getElementById("btn-minus");
+      const btnPlus = document.getElementById("btn-plus");
+      const countDisplay = document.getElementById("acompanhantes-count");
+      const btnConfirmar = document.getElementById("btn-confirmar");
+      const confirmacaoSucesso = document.getElementById("confirmacao-sucesso");
+      const btnNovaConfirmacao = document.getElementById(
+        "btn-nova-confirmacao",
+      );
+      const listaConfirmados = document.getElementById("lista-confirmados");
+      const totalConfirmados = document.getElementById("total-confirmados");
+      const semConfirmacoes = document.getElementById("sem-confirmacoes");
+      const btnCompartilhar = document.getElementById("btn-compartilhar");
+
+      // Controle de acompanhantes
+      if (btnMinus && btnPlus && countDisplay) {
+        btnMinus.addEventListener("click", () => {
+          if (acompanhantes > 0) {
+            acompanhantes--;
+            countDisplay.textContent = acompanhantes;
+          }
+        });
+
+        btnPlus.addEventListener("click", () => {
+          if (acompanhantes < 10) {
+            acompanhantes++;
+            countDisplay.textContent = acompanhantes;
+          }
+        });
+      }
+
+      // Máscara de telefone
+      if (inputTelefone) {
+        inputTelefone.addEventListener("input", (e) => {
+          let value = e.target.value.replace(/\D/g, "");
+          if (value.length > 11) value = value.slice(0, 11);
+
+          if (value.length > 6) {
+            value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+          } else if (value.length > 2) {
+            value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+          }
+          e.target.value = value;
+        });
+      }
+
+      // Formulário de confirmação (Opção A: envia para WhatsApp da mãe)
+      if (form && btnConfirmar) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          btnConfirmar.disabled = true;
+          btnConfirmar.innerHTML = "⏳ Enviando...";
+
+          const nome = (inputNome?.value || "").trim();
+          const telefone = (inputTelefone?.value || "").trim();
+          const acomp = acompanhantes || 0;
+
+          const config = window.elementSdk?.config || defaultConfig;
+
+          const mensagem =
+            `🌻 *Nova Confirmação de Presença* 🌻\n\n` +
+            `👤 Nome: *${nome}*\n` +
+            `📱 WhatsApp: ${telefone}\n` +
+            `👥 Acompanhantes: ${acomp}\n\n` +
+            `🎉 Festa: ${config.nome_aniversariante || defaultConfig.nome_aniversariante}\n` +
+            `🎂 ${config.idade || defaultConfig.idade}\n` +
+            `📅 ${config.data_festa || defaultConfig.data_festa}\n` +
+            `⏰ ${config.horario || defaultConfig.horario}\n` +
+            `📍 ${config.nome_local || defaultConfig.nome_local}\n` +
+            `${config.endereco || defaultConfig.endereco}`;
+
+          const texto = encodeURIComponent(mensagem);
+
+          window.open(`https://wa.me/${WHATS_MAE}?text=${texto}`, "_blank");
+
+          form.classList.add("hidden");
+          confirmacaoSucesso?.classList.remove("hidden");
+
+          btnConfirmar.disabled = false;
+          btnConfirmar.innerHTML = "✅ Confirmar Presença";
+        });
+      }
+
+      // Nova confirmação
+      if (btnNovaConfirmacao) {
+        btnNovaConfirmacao.addEventListener("click", () => {
+          form?.reset();
+          acompanhantes = 0;
+          if (countDisplay) countDisplay.textContent = "0";
+          form?.classList.remove("hidden");
+          confirmacaoSucesso?.classList.add("hidden");
+          if (btnConfirmar) {
+            btnConfirmar.disabled = false;
+            btnConfirmar.innerHTML = "✅ Confirmar Presença";
+          }
+        });
+      }
+
+      // Compartilhar no WhatsApp (convite)
+      if (btnCompartilhar) {
+        btnCompartilhar.addEventListener("click", () => {
+          const config = window.elementSdk?.config || defaultConfig;
+
+          const texto = encodeURIComponent(
+            `🌻 *Convite de Aniversário* 🌻\n\n` +
+              `Você está convidado para o aniversário de *${config.nome_aniversariante || defaultConfig.nome_aniversariante}*!\n\n` +
+              `🎂 *${config.idade || defaultConfig.idade}*\n` +
+              `📅 ${config.data_festa || defaultConfig.data_festa}\n` +
+              `⏰ ${config.horario || defaultConfig.horario}\n` +
+              `📍 ${config.nome_local || defaultConfig.nome_local}\n` +
+              `${config.endereco || defaultConfig.endereco}\n\n` +
+              `Tema: Sítio do Picapau Amarelo 🎀🌽\n\n` +
+              `Confirme sua presença! 🎉`,
+          );
+
+          window.open(`https://wa.me/?text=${texto}`, "_blank");
+        });
+      }
+
+      // Imprimir / PDF
+      const btnImprimir = document.getElementById("btn-imprimir");
+      if (btnImprimir) {
+        btnImprimir.addEventListener("click", () => window.print());
+      }
+
+      // Renderizar lista de confirmados (somente se seu Data SDK estiver trazendo dados)
+      function renderizarConfirmados(data) {
+        confirmacoes = data;
+
+        let totalPessoas = 0;
+        data.forEach((c) => {
+          totalPessoas += 1 + (c.acompanhantes || 0);
+        });
+
+        if (totalConfirmados) totalConfirmados.textContent = totalPessoas;
+
+        if (!listaConfirmados || !semConfirmacoes) return;
+
+        if (data.length === 0) {
+          semConfirmacoes.classList.remove("hidden");
+          const items = listaConfirmados.querySelectorAll(".confirmado-item");
+          items.forEach((item) => item.remove());
+          return;
+        }
+
+        semConfirmacoes.classList.add("hidden");
+
+        const existingItems = new Map();
+        listaConfirmados.querySelectorAll(".confirmado-item").forEach((el) => {
+          existingItems.set(el.dataset.id, el);
+        });
+
+        const currentIds = new Set(data.map((c) => c.__backendId));
+
+        existingItems.forEach((el, id) => {
+          if (!currentIds.has(id)) el.remove();
+        });
+
+        data.forEach((confirmacao) => {
+          const id = confirmacao.__backendId;
+          let item = existingItems.get(id);
+
+          if (item) {
+            item.querySelector(".nome").textContent = confirmacao.nome;
+            item.querySelector(".telefone").textContent = confirmacao.telefone;
+            item.querySelector(".acomp").textContent =
+              confirmacao.acompanhantes > 0
+                ? `+${confirmacao.acompanhantes} acompanhante(s)`
+                : "";
+          } else {
+            item = document.createElement("div");
+            item.className =
+              "confirmado-item flex items-center justify-between p-3 bg-green-50 rounded-lg mb-2 border border-green-200";
+            item.dataset.id = id;
+            item.innerHTML = `
+              <div>
+                <p class="nome font-bold text-amber-800">${confirmacao.nome}</p>
+                <p class="telefone text-sm text-gray-600">${confirmacao.telefone}</p>
+                <p class="acomp text-xs text-green-600">${confirmacao.acompanhantes > 0 ? `+${confirmacao.acompanhantes} acompanhante(s)` : ""}</p>
+              </div>
+              <span class="text-green-500 text-2xl">✅</span>
+            `;
+            listaConfirmados.appendChild(item);
+          }
+        });
+      }
+
+      // Função de atualização de UI
+      async function onConfigChange(config) {
+        const c = { ...defaultConfig, ...config };
+
+        document.getElementById("nome-display").textContent =
+          c.nome_aniversariante;
+        document.getElementById("idade-display").textContent = c.idade;
+        document.getElementById("data-display").textContent = c.data_festa;
+        document.getElementById("horario-display").textContent = c.horario;
+        document.getElementById("local-display").textContent = c.nome_local;
+        document.getElementById("endereco-display").textContent = c.endereco;
+
+        document.getElementById("app").style.background =
+          `linear-gradient(180deg, ${c.background_color} 0%, #98FB98 50%, #90EE90 100%)`;
+
+        const fontStack = `${c.font_family}, 'Nunito', sans-serif`;
+        document.body.style.fontFamily = fontStack;
+        document.documentElement.style.fontSize = `${c.font_size}px`;
+      }
+
+      // Inicialização do Element SDK
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities: (config) => ({
+            recolorables: [
+              {
+                get: () =>
+                  config.background_color || defaultConfig.background_color,
+                set: (v) => {
+                  config.background_color = v;
+                  window.elementSdk.setConfig({ background_color: v });
+                },
+              },
+              {
+                get: () => config.card_color || defaultConfig.card_color,
+                set: (v) => {
+                  config.card_color = v;
+                  window.elementSdk.setConfig({ card_color: v });
+                },
+              },
+              {
+                get: () => config.text_color || defaultConfig.text_color,
+                set: (v) => {
+                  config.text_color = v;
+                  window.elementSdk.setConfig({ text_color: v });
+                },
+              },
+              {
+                get: () =>
+                  config.primary_action_color ||
+                  defaultConfig.primary_action_color,
+                set: (v) => {
+                  config.primary_action_color = v;
+                  window.elementSdk.setConfig({ primary_action_color: v });
+                },
+              },
+              {
+                get: () =>
+                  config.secondary_action_color ||
+                  defaultConfig.secondary_action_color,
+                set: (v) => {
+                  config.secondary_action_color = v;
+                  window.elementSdk.setConfig({ secondary_action_color: v });
+                },
+              },
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => config.font_family || defaultConfig.font_family,
+              set: (v) => {
+                config.font_family = v;
+                window.elementSdk.setConfig({ font_family: v });
+              },
+            },
+            fontSizeable: {
+              get: () => config.font_size || defaultConfig.font_size,
+              set: (v) => {
+                config.font_size = v;
+                window.elementSdk.setConfig({ font_size: v });
+              },
+            },
+          }),
+          mapToEditPanelValues: (config) =>
+            new Map([
+              [
+                "nome_aniversariante",
+                config.nome_aniversariante || defaultConfig.nome_aniversariante,
+              ],
+              ["idade", config.idade || defaultConfig.idade],
+              ["data_festa", config.data_festa || defaultConfig.data_festa],
+              ["horario", config.horario || defaultConfig.horario],
+              ["nome_local", config.nome_local || defaultConfig.nome_local],
+              ["endereco", config.endereco || defaultConfig.endereco],
+            ]),
+        });
+      }
+
+      // Inicialização do Data SDK (se existir no seu ambiente)
+      if (window.dataSdk) {
+        const dataHandler = {
+          onDataChanged(data) {
+            renderizarConfirmados(data);
+          },
+        };
+        window.dataSdk.init(dataHandler);
+      }
+    </script>
+
+    <!-- (Se você não precisa desse script do Cloudflare, dá pra remover. Mantive igual estava.) -->
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9d05fce84411e2aa',t:'MTc3MTUwNjQ1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
